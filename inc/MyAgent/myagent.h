@@ -4,7 +4,7 @@
 class MyAgent : public bats::HumanoidAgent
 {
   public:
-    MyAgent() {};
+    MyAgent() :HumanoidAgent("HfutEngine") {};
     virtual void init();
     virtual void think();
 };

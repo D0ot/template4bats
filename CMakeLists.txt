@@ -16,11 +16,13 @@ set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/inc)
 set(INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR} ${LIBXML2_INCLUDE_DIR} ${SigC++_INCLUDE_DIRS} ${LIBXMLXX_INCLUDE_DIRS} ${MY_INCLUDE_DIR})
 
 set(SOURCES 
+src/main.cc
 src/MyAgent/think.cc
 src/MyAgent/init.cc
 )
 
 add_executable(main ${SOURCES})
 target_include_directories(main PUBLIC ${INCLUDE_DIRS})
+target_link_libraries(main bats)
 
 
