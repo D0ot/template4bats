@@ -13,7 +13,7 @@ PKG_CHECK_MODULES(GTKMM gtkmm-2.4)
 
 set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/inc)
 
-set(INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR} ${LIBXML2_INCLUDE_DIR} ${SigC++_INCLUDE_DIRS} ${LIBXMLXX_INCLUDE_DIRS} ${MY_INCLUDE_DIR})
+set(INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR} ${LIBXML2_INCLUDE_DIR} ${SigC++_INCLUDE_DIRS} ${LIBXMLXX_INCLUDE_DIRS} ${MY_INCLUDE_DIR} ${GTKMM_INCLUDE_DIR})
 
 set(SOURCES 
 src/main.cc
@@ -25,4 +25,12 @@ add_executable(main ${SOURCES})
 target_include_directories(main PUBLIC ${INCLUDE_DIRS})
 target_link_libraries(main bats)
 
+if (GTKMM_FOUND)
+  target_link_libraries(main ${GTKMM_LIBRARIES} ${LIBXML2_LIBRARIES})
+endif (GTKMM_FOUND)
+
+
+configure_file(xml/conf.dtd . COPYONLY)
+configure_file(xml/conf.xml . COPYONLY)
+configure_file(xml/nao_mdl.xml . COPYONLY)
 
