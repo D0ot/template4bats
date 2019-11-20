@@ -18,4 +18,8 @@ void MyAgent::init()
 
     SDebugger::initialize<RoboVizDebugger>(); 
 
+    auto &debugger = SDebugger::getInstance();
+    debugger.setVerbose(1);
+    debugger.start();
+
 }
